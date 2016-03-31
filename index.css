@@ -1,0 +1,25 @@
+html, body, .helper {
+    height: 100%;
+    text-align: center;
+}
+
+.helper, .content {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+#name {
+    font-size: 6vw;
+}
+
+#education {
+    font-size: 1.5vmax;
+}
+
+#job {
+    font-size: 1.5vmax;
+}
+
+.btn {
+    font-size: 2vmin;
+}
