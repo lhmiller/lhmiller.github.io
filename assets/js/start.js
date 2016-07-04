@@ -103,6 +103,7 @@ function updateLinks() {
 
 function weather(loc) {
     'use strict';
+    history.pushState('', document.title, window.location.pathname);
     var wxLoc;
     if (loc !== undefined) {
         wxLoc = loc;
@@ -278,6 +279,15 @@ function getLocation() {
             }, { enableHighAccuracy: true, timeout: 30000, maximumAge: 0 });
     } else {
         weather();
+    }
+}
+
+function weatherLoad() {
+    'use strict';
+    if (document.location.hash.length > 0) {
+        weather(document.location.hash.substr(1,document.location.hash.length));
+    } else {
+        getLocation();
     }
 }
 
