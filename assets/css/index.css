@@ -1,0 +1,22 @@
+#name {
+    font-size: 9vmin;
+}
+
+#education, #job {
+    font-size: 3vmin;
+}
+
+.btn {
+    font-size: 2.5vmin;
+}
+
+#parent {
+    display:flex;
+    min-height: 100%;
+    min-height: 100vh;
+    align-items: center;
+    
+}
+#child {
+    margin:0 auto;
+}

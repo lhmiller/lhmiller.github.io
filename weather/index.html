@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Weather</title>
+        <link rel="stylesheet" href="https://bootswatch.com/darkly/bootstrap.min.css">
+        <link rel="stylesheet" href="../assets/css/start.css">
+        <link rel='shortcut icon' href='../assets/img/favicon.ico' type='image/x-icon'>
+        <script src="../assets/js/countdown.js"></script>
+    </head>
+    <body onload="getLocation();">
+        <div id="weather" class="text-center"><h2>Getting your location and updating weather...</h2></div>
+        <div class="bg-info text-center footer">
+            <div id="weather-version"></div>
+            <div id="version"></div>
+            <div>
+                <strong>
+                    &copy; <span id="year"></span> Lucas Miller Design. All rights reserved.
+                    <br>
+                    Weather data from <a href="https://www.wunderground.com/?apiref=5377e7fc7aa9e9ad">Weather Underground</a>
+                </strong>
+            </div>
+        </div>
+        
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+        <script src="../assets/js/bootstrap.min.js"></script>
+        <script src="../assets/js/start.js"></script>
+    </body>
+</html>
