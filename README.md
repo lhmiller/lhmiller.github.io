@@ -1,3 +1,0 @@
-# lhmiller.github.io
-
-Welcome!
