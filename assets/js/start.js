@@ -285,7 +285,7 @@ function getLocation() {
 function weatherLoad() {
     'use strict';
     if (document.location.hash.length > 0) {
-        weather(document.location.hash.substr(1,document.location.hash.length));
+        weather(decodeURIComponent(document.location.hash.substr(1,document.location.hash.length)));
     } else {
         getLocation();
     }
