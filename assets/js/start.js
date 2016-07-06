@@ -103,13 +103,13 @@ function updateLinks() {
 
 function weather(loc) {
     'use strict';
-    history.pushState('', document.title, window.location.pathname);
     var wxLoc;
     if (loc !== undefined) {
         wxLoc = loc;
     } else {
         wxLoc = "autoip";
     }
+    location.hash = encodeURIComponent(wxLoc);
     jQuery.ajax({
         url: `https://api.wunderground.com/api/2fc23ac9e477ca80/conditions/astronomy/forecast10day/q/${wxLoc}.json`,
         type: 'GET',
@@ -196,7 +196,7 @@ function showWeatherData(data) {
     $('#weather').html(`
                         ${almanac}
                         ${tmrw}
-                        
+
                         <h2>Weather in ${cu.display_location.city}</h2>
                         <span id="loctag" class="${color} noselect">${locTag}</span>
                         <h4>Conditions are ${cu.weather.toLowerCase()}</h4>
