@@ -75,7 +75,8 @@ function updateLinks() {
 //            ["warning", "https://resnetcontroller2.netadm.calpoly.edu:4343/", "Controller"],
             ["warning", "https://prtg.lucashmiller.com/", "PRTG"],
             ["warning", "https://unifi.lucashmiller.com/", "UniFi Controller"],
-            ["warning", "https://edge.lucashmiller.com/", "EdgeRouter"],
+            ["warning", "http://edge.lucashmiller.com/", "eGauge"],
+            ["warning", "https://splunk.lucashmiller.com/", "Splunk"],
             ["warning", "https://www.cloudflare.com/login", "CloudFlare"],
             ["warning", "https://cibng.ibanking-services.com/EamWeb/Account/Login.aspx?orgId=385_122238420&FIFID=122238420&brand=385_122238420&appId=CeB&FIORG=385", "Rabobank"],
             ["warning", "https://onlinebanking.usbank.com/Auth/Login", "USBank"]
