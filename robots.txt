@@ -1,4 +1,4 @@
 User-agent: *
 Disallow: /start/
-Disallow: /go/
+Disallow: /assets/
 Disallow: /weather/
