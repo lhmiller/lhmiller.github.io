@@ -111,6 +111,7 @@ function weather(loc) {
         wxLoc = "autoip";
     }
     location.hash = encodeURIComponent(wxLoc);
+
     jQuery.ajax({
         url: `https://api.wunderground.com/api/2fc23ac9e477ca80/conditions/astronomy/forecast10day/q/${wxLoc}.json`,
         type: 'GET',
@@ -143,6 +144,10 @@ function showWeatherData(data) {
         wind = cu.wind_mph * 1;
     } else {
         wind = `${cu.wind_mph * 1}&nbsp;-&nbsp;${cu.wind_gust_mph * 1}`;
+    }
+    
+    if (cu.wind_mph === cu.wind_gust_mph) {
+        wind = cu.wind_mph;
     }
     
     if (tmrw < 0) {
@@ -272,6 +277,8 @@ function getLocation() {
             function (pos) {
                 var locationData = `${pos.coords.latitude},${pos.coords.longitude}`;
                 weather(locationData);
+                setLocTag("Geolocation");
+                location.hash = encodeURIComponent("geolocation");
                 roundedLocationData = `${Math.round(pos.coords.latitude*10000)/10000}, ${Math.round(pos.coords.longitude*10000)/10000}`;
             },
             function (err) {
@@ -286,7 +293,12 @@ function getLocation() {
 function weatherLoad() {
     'use strict';
     if (document.location.hash.length > 0) {
-        weather(decodeURIComponent(document.location.hash.substr(1,document.location.hash.length)));
+        if (document.location.hash.substr(1,document.location.hash.length) === "geolocation") {
+            getLocation();
+        } else {
+            weather(decodeURIComponent(document.location.hash.substr(1,document.location.hash.length)));
+            setLocTag(decodeURIComponent(document.location.hash.substr(1,document.location.hash.length)));
+        }
     } else {
         getLocation();
     }
