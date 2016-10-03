@@ -54,7 +54,6 @@ function updateLinks() {
             ["default", "https://ssb.cuesta.edu:9040/prod/syk_class_finder.p_basic_search", "Class Finder"],
             ["info", "https://docs.google.com/spreadsheets/d/1e6uSnEvF8KesepUI2IMivxA_RQcrPU1OOI0PFVKqor4/", "Grades"],
             ["info", "https://docs.google.com/spreadsheets/d/1eEiRDzKS6eCE8oAOYBbb9aAxYFubfTTpxwkrl6k9BuI/", "Degree Progress"],
-//            ["info", "https://docs.google.com/spreadsheets/d/1rFMPpavdAic6zx-0XXNMI5DfA-7T9I_T96GxgGqaYa0/", "Plus Dollars"],
             ["info", "https://docs.google.com/spreadsheets/d/1fzjQ8DVAv8ZOfjONMBP3YoFqLj6CyxZQCmVkf-kS9F0/", "MINDBODY Hours"]
         ],
         [
@@ -62,7 +61,6 @@ function updateLinks() {
             ["success", "https://my.calpoly.edu/cas/login?service=https://cmsweb.calpoly.edu/psp/HSLOPRD/EMPLOYEE/HRMS/c/SA_LEARNER_SERVICES.SSS_STUDENT_CENTER.GBL?FolderPath=PORTAL_ROOT_OBJECT.CO_EMPLOYEE_SELF_SERVICE.HC_SSS_STUDENT_CENTER%26IsFolder=false%26IgnoreParamTempl=FolderPath%2cIsFolder%26RL=%26target=main0%26navc=2398?cmd=login%26languageCd=ENG%26userid=PS%26pwd=z", "Student Center"],
             ["success", "https://my.calpoly.edu/cas/login?service=http://pass.calpoly.edu/j_spring_cas_security_check", "PASS"],
             ["success", "https://polyplanner.calpoly.edu/", "PolyPlanner"],
-//            ["success", "https://my.calpoly.edu/cas/login?service=https://cardcenter.calpoly.edu", "Card Center"],
             ["success", "https://dashboards.calpoly.edu/dw/polydata/student_poly_profile_self_svc.display", "PolyProfile"],
             ["success", "http://schedules.calpoly.edu/", "Schedules"],
             ["success", "https://my.calpoly.edu/cas/login?service=https://studentpay.calpoly.edu/CASServlet?type=student", "Resnet Timesheet"],
@@ -71,15 +69,17 @@ function updateLinks() {
         ],
         [
             ["warning", "https://internal.housing.calpoly.edu/", "UH Internal"],
-//            ["warning", "https://backupclearpass.netadm.calpoly.edu/tips/tipsLogin.action", "ClearPass"],
-//            ["warning", "https://resnetcontroller2.netadm.calpoly.edu:4343/", "Controller"],
+            ["warning", "https://backupclearpass.netadm.calpoly.edu/tips/tipsLogin.action", "ClearPass"],
+            // ["warning", "https://resnetcontroller2.netadm.calpoly.edu:4343/", "PCV Controller"],
             ["warning", "https://prtg.lucashmiller.com/", "PRTG"],
             ["warning", "https://unifi.lucashmiller.com/", "UniFi Controller"],
-            ["warning", "http://edge.lucashmiller.com/", "eGauge"],
-            ["warning", "https://splunk.lucashmiller.com/", "Splunk"],
-            ["warning", "https://www.cloudflare.com/login", "CloudFlare"],
+            ["warning", "http://edge.lucashmiller.com:8080/", "eGauge"],
+            ["warning", "http://edge.lucashmiller.com/", "EdgeRouter"],
+            // ["warning", "https://splunk.lucashmiller.com/", "Splunk"],
+            // ["warning", "https://www.cloudflare.com/login", "CloudFlare"],
             ["warning", "https://cibng.ibanking-services.com/EamWeb/Account/Login.aspx?orgId=385_122238420&FIFID=122238420&brand=385_122238420&appId=CeB&FIORG=385", "Rabobank"],
-            ["warning", "https://onlinebanking.usbank.com/Auth/Login", "USBank"]
+            ["warning", "https://onlinebanking.usbank.com/Auth/Login", "USBank"],
+            ["warning", "https://servicing.capitalone.com/c1/Login.aspx", "CapitalOne"]
         ]
     ],
         goog = "";
@@ -295,6 +295,8 @@ function weatherLoad() {
     if (document.location.hash.length > 0) {
         if (document.location.hash.substr(1,document.location.hash.length) === "geolocation") {
             getLocation();
+        } else if (document.location.hash.substr(1,document.location.hash.length) === "noweather") {
+            $('#weather').hide();
         } else {
             weather(decodeURIComponent(document.location.hash.substr(1,document.location.hash.length)));
             setLocTag(decodeURIComponent(document.location.hash.substr(1,document.location.hash.length)));
