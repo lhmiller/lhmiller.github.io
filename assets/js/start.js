@@ -51,7 +51,6 @@ function updateLinks() {
             ["danger", "https://drive.google.com/", "Drive"],
             ["danger", "https://calendar.google.com/", "Calendar"],
             ["default", "https://my.cuesta.edu/", "My Cuesta"],
-            ["default", "https://ssb.cuesta.edu:9040/prod/syk_class_finder.p_basic_search", "Class Finder"],
             ["info", "https://docs.google.com/spreadsheets/d/1e6uSnEvF8KesepUI2IMivxA_RQcrPU1OOI0PFVKqor4/", "Grades"],
             ["info", "https://docs.google.com/spreadsheets/d/1eEiRDzKS6eCE8oAOYBbb9aAxYFubfTTpxwkrl6k9BuI/", "Degree Progress"],
             ["info", "https://docs.google.com/spreadsheets/d/1fzjQ8DVAv8ZOfjONMBP3YoFqLj6CyxZQCmVkf-kS9F0/", "MINDBODY Hours"]
