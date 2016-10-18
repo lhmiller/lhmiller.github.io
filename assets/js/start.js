@@ -103,6 +103,7 @@ function updateLinks() {
 
 function weather(loc) {
     'use strict';
+    $('#weather').show();
     var wxLoc;
     if (loc !== undefined) {
         wxLoc = loc;
@@ -182,9 +183,9 @@ function showWeatherData(data) {
     tenday += `<div class="text-center">
             <div class="btn-group">
                 <button type="button" class="btn btn-success btn-xs" id="geobtn" onclick="getLocation();setLocTag('Geolocation');">Use Geolocation</button>
-                <button type="button" class="btn btn-danger btn-xs" onclick="wxEntry();">Change Location</button>
+                <button type="button" class="btn btn-warning btn-xs" onclick="wxEntry();">Change Location</button>
                 <div class="btn-group dropup">
-                    <button type="button" class="btn btn-danger btn-xs dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <button type="button" class="btn btn-warning btn-xs dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <span class="caret"></span>
                     </button>
                     <ul class="dropdown-menu">
@@ -194,6 +195,7 @@ function showWeatherData(data) {
                         <li><a onclick='weather("PWS:KCASANLU39");setLocTag("cp");' class="awnhref">Cal Poly</a></li>
                     </ul>
                 </div>
+                <button type="button" class="btn btn-danger btn-xs" onclick="hideWeather();">Hide Weather</button>
             </div>
         </div>`
     wxupdated = `${wxupdated.getFullYear()}-${wxmo}-${wxdy}&nbsp;at&nbsp;${twelveHour(wxhr)}:${wxmn}&nbsp;${ampm(wxhr)}`;
@@ -291,11 +293,13 @@ function getLocation() {
 
 function weatherLoad() {
     'use strict';
+    $('#wxShowButton').hide();
     if (document.location.hash.length > 0) {
         if (document.location.hash.substr(1,document.location.hash.length) === "geolocation") {
             getLocation();
         } else if (document.location.hash.substr(1,document.location.hash.length) === "noweather") {
             $('#weather').hide();
+            $('#wxShowButton').show();
         } else {
             weather(decodeURIComponent(document.location.hash.substr(1,document.location.hash.length)));
             setLocTag(decodeURIComponent(document.location.hash.substr(1,document.location.hash.length)));
@@ -332,4 +336,17 @@ function setLocTag(loc) {
         locTag = loc;
         color = "bg-danger";
     }
+}
+
+function showWeather() {
+    'use strict';
+    location.hash = encodeURIComponent("geolocation");
+    weatherLoad();
+}
+
+function hideWeather() {
+    'use strict';
+    location.hash = "noweather";
+    $('#weather').hide();
+    $('#wxShowButton').show();
 }
