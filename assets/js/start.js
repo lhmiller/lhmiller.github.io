@@ -1,5 +1,18 @@
 var locTag = "Geolocation", color = "bg-success", roundedLocationData;
 
+function showWeather() {
+    'use strict';
+    location.hash = encodeURIComponent("geolocation");
+    weatherLoad();
+}
+
+function hideWeather() {
+    'use strict';
+    location.hash = "noweather";
+    $('#weather').hide();
+    $('#wxShowButton').show();
+}
+
 function startTime() {
     'use strict';
     var dayName = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
@@ -336,17 +349,4 @@ function setLocTag(loc) {
         locTag = loc;
         color = "bg-danger";
     }
-}
-
-function showWeather() {
-    'use strict';
-    location.hash = encodeURIComponent("geolocation");
-    weatherLoad();
-}
-
-function hideWeather() {
-    'use strict';
-    location.hash = "noweather";
-    $('#weather').hide();
-    $('#wxShowButton').show();
 }
