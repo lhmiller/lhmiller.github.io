@@ -18,7 +18,7 @@ function startTime() {
     var dayName = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
         monName = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
         now = new Date(),
-        dtString = dayName[now.getDay()] + ", " + monName[now.getMonth()] + " " + now.getDate() + " (Week 6)";
+        dtString = dayName[now.getDay()] + ", " + monName[now.getMonth()] + " " + now.getDate() + " (Week 10)";
     document.getElementById('txt2').innerHTML = dtString;
 }
 
