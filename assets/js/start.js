@@ -18,7 +18,7 @@ function startTime() {
     var dayName = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
         monName = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
         now = new Date(),
-        dtString = dayName[now.getDay()] + ", " + monName[now.getMonth()] + " " + now.getDate() + " (Week 10)";
+        dtString = dayName[now.getDay()] + ", " + monName[now.getMonth()] + " " + now.getDate();
     document.getElementById('txt2').innerHTML = dtString;
 }
 
@@ -59,14 +59,20 @@ function updateLinks() {
     'use strict';
     var links = [
         [
-            ["danger", "https://www.google.com", "Google"],
-            ["danger", "https://www.gmail.com/", "Gmail"],
-            ["danger", "https://drive.google.com/", "Drive"],
-            ["danger", "https://calendar.google.com/", "Calendar"],
-            ["default", "https://my.cuesta.edu/", "My Cuesta"],
+            // ["danger", "https://www.google.com", "Google"],
+            // ["danger", "https://www.gmail.com/", "Gmail"],
+            // ["danger", "https://drive.google.com/", "Drive"],
+            // ["danger", "https://calendar.google.com/", "Calendar"],
+            ["danger", "https://my.cuesta.edu/", "My Cuesta"],
             ["info", "https://docs.google.com/spreadsheets/d/1e6uSnEvF8KesepUI2IMivxA_RQcrPU1OOI0PFVKqor4/", "Grades"],
             ["info", "https://docs.google.com/spreadsheets/d/1eEiRDzKS6eCE8oAOYBbb9aAxYFubfTTpxwkrl6k9BuI/", "Degree Progress"],
             ["info", "https://docs.google.com/spreadsheets/d/1fzjQ8DVAv8ZOfjONMBP3YoFqLj6CyxZQCmVkf-kS9F0/", "MINDBODY Hours"]
+            ["warning", "https://internal.housing.calpoly.edu/", "UH Internal"],
+            ["warning", "https://backupclearpass.netadm.calpoly.edu/tips/tipsLogin.action", "ClearPass"],
+            ["warning", "https://prtg.lucashmiller.com/", "PRTG"],
+            ["warning", "https://unifi.lucashmiller.com/", "UniFi Controller"],
+            ["warning", "http://edge.lucashmiller.com:8080/", "eGauge"],
+            ["warning", "http://edge.lucashmiller.com/", "EdgeRouter"],
         ],
         [
             ["success", "https://my.calpoly.edu", "My Cal Poly"],
@@ -80,18 +86,12 @@ function updateLinks() {
             ["success", "http://www.polyratings.com/", "Polyratings"]
         ],
         [
-            ["warning", "https://internal.housing.calpoly.edu/", "UH Internal"],
-            ["warning", "https://backupclearpass.netadm.calpoly.edu/tips/tipsLogin.action", "ClearPass"],
             // ["warning", "https://resnetcontroller2.netadm.calpoly.edu:4343/", "PCV Controller"],
-            ["warning", "https://prtg.lucashmiller.com/", "PRTG"],
-            ["warning", "https://unifi.lucashmiller.com/", "UniFi Controller"],
-            ["warning", "http://edge.lucashmiller.com:8080/", "eGauge"],
-            ["warning", "http://edge.lucashmiller.com/", "EdgeRouter"],
             // ["warning", "https://splunk.lucashmiller.com/", "Splunk"],
             // ["warning", "https://www.cloudflare.com/login", "CloudFlare"],
-            ["warning", "https://cibng.ibanking-services.com/EamWeb/Account/Login.aspx?orgId=385_122238420&FIFID=122238420&brand=385_122238420&appId=CeB&FIORG=385", "Rabobank"],
-            ["warning", "https://onlinebanking.usbank.com/Auth/Login", "USBank"],
-            ["warning", "https://servicing.capitalone.com/c1/Login.aspx", "CapitalOne"]
+            // ["warning", "https://cibng.ibanking-services.com/EamWeb/Account/Login.aspx?orgId=385_122238420&FIFID=122238420&brand=385_122238420&appId=CeB&FIORG=385", "Rabobank"],
+            // ["warning", "https://onlinebanking.usbank.com/Auth/Login", "USBank"],
+            // ["warning", "https://servicing.capitalone.com/c1/Login.aspx", "CapitalOne"]
         ]
     ],
         goog = "";
