@@ -111,7 +111,7 @@ function updateLinks() {
     for (var link in links[2]) {
         it += `<a class="btn btn-${links[2][link][0]}" role="button" href="${links[2][link][1]}">${links[2][link][2]}</a>`;
     }
-    document.getElementById("it").innerHTML = it;
+    // document.getElementById("it").innerHTML = it;
 }
 
 function weather(loc) {
