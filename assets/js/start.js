@@ -63,16 +63,15 @@ function updateLinks() {
             // ["danger", "https://www.gmail.com/", "Gmail"],
             // ["danger", "https://drive.google.com/", "Drive"],
             // ["danger", "https://calendar.google.com/", "Calendar"],
-            ["danger", "https://my.cuesta.edu/", "My Cuesta"],
             ["info", "https://docs.google.com/spreadsheets/d/1e6uSnEvF8KesepUI2IMivxA_RQcrPU1OOI0PFVKqor4/", "Grades"],
             ["info", "https://docs.google.com/spreadsheets/d/1eEiRDzKS6eCE8oAOYBbb9aAxYFubfTTpxwkrl6k9BuI/", "Degree Progress"],
-            ["info", "https://docs.google.com/spreadsheets/d/1fzjQ8DVAv8ZOfjONMBP3YoFqLj6CyxZQCmVkf-kS9F0/", "MINDBODY Hours"]
+            ["info", "https://docs.google.com/spreadsheets/d/1fzjQ8DVAv8ZOfjONMBP3YoFqLj6CyxZQCmVkf-kS9F0/", "MINDBODY Hours"],
             ["warning", "https://internal.housing.calpoly.edu/", "UH Internal"],
             ["warning", "https://backupclearpass.netadm.calpoly.edu/tips/tipsLogin.action", "ClearPass"],
             ["warning", "https://prtg.lucashmiller.com/", "PRTG"],
             ["warning", "https://unifi.lucashmiller.com/", "UniFi Controller"],
             ["warning", "http://edge.lucashmiller.com:8080/", "eGauge"],
-            ["warning", "http://edge.lucashmiller.com/", "EdgeRouter"],
+            ["warning", "http://edge.lucashmiller.com/", "EdgeRouter"]
         ],
         [
             ["success", "https://my.calpoly.edu", "My Cal Poly"],
@@ -83,7 +82,8 @@ function updateLinks() {
             ["success", "http://schedules.calpoly.edu/", "Schedules"],
             ["success", "https://my.calpoly.edu/cas/login?service=https://studentpay.calpoly.edu/CASServlet?type=student", "Resnet Timesheet"],
             ["success", "http://catalog.calpoly.edu/", "Catalog"],
-            ["success", "http://www.polyratings.com/", "Polyratings"]
+            ["success", "http://www.polyratings.com/", "Polyratings"],
+            ["danger", "https://my.cuesta.edu/", "My Cuesta"],
         ],
         [
             // ["warning", "https://resnetcontroller2.netadm.calpoly.edu:4343/", "PCV Controller"],
