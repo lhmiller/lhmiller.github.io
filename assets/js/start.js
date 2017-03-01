@@ -84,6 +84,7 @@ function updateLinks() {
             ["success", "http://catalog.calpoly.edu/", "Catalog"],
             ["success", "http://www.polyratings.com/", "Polyratings"],
             ["danger", "https://my.cuesta.edu/", "My Cuesta"],
+            ["danger", "https://ssb.cuesta.edu/prod/syk_class_finder.p_basic_search", "Cuesta Courses"],
         ],
         [
             // ["warning", "https://resnetcontroller2.netadm.calpoly.edu:4343/", "PCV Controller"],
