@@ -1,4 +1,5 @@
 var locTag = "Geolocation", color = "bg-success", roundedLocationData;
+var wxdata;
 
 function showWeather() {
     'use strict';
@@ -51,6 +52,7 @@ function weather(loc) {
 
 function showWeatherData(data) {
     'use strict';
+    wxdata = data;
     var cu = data.current_observation,
         fc = data.forecast.simpleforecast.forecastday,
         wxupdated = new Date(cu.observation_time_rfc822),
@@ -59,32 +61,35 @@ function showWeatherData(data) {
         wxhr = wxupdated.getHours(),
         wxmn = addZero(wxupdated.getMinutes()),
         tmrw = fc[1].high.fahrenheit - fc[0].high.fahrenheit,
+        tmrwtxt = data.forecast.txt_forecast.forecastday[0].fcttext,
         cond = fc[1].conditions.toLowerCase(),
         wind,
         dgrs = "degree" + plural(tmrw),
         stdy;
     
     if (cu.wind_mph === 0 && cu.wind_gust_mph === 0) {
-        wind = 0;
+        wind = "none";
     } else if (cu.wind_mph === 0) {
-        wind = cu.wind_gust_mph * 1;
+        wind = cu.wind_gust_mph * 1 + " MPH";
     } else if (cu.wind_gust_mph === 0) {
-        wind = cu.wind_mph * 1;
+        wind = cu.wind_mph * 1 + " MPH";
     } else {
-        wind = `${cu.wind_mph * 1}&nbsp;-&nbsp;${cu.wind_gust_mph * 1}`;
-    }
+        wind = `${cu.wind_mph * 1}&nbsp;-&nbsp;${cu.wind_gust_mph * 1} MPH`;
+    } 
     
-    if (cu.wind_mph === cu.wind_gust_mph) {
-        wind = cu.wind_mph;
+    if (wind === "none") {
+        wind = "";
+    } else if (cu.wind_mph === cu.wind_gust_mph) {
+        wind = cu.wind_mph + " MPH";
     }
     
     if (tmrw < 0) {
         tmrw *= -1;
-        tmrw = `<div class="bg-info tmrw-cool"><h4>Tomorrow is forecast to be ${tmrw}&nbsp;${dgrs}&nbsp;cooler than today,&nbsp;and conditions will be ${cond}.<h4></div>`;
+        tmrw = `<div class="bg-info tmrw-cool"><h4>${tmrwtxt}<h4></div>`;
     } else if (tmrw === 0) {
-        tmrw = `<div class="tmrw-same"><h4>Tomorrow is forecast to be the same temperature as today, and conditions will be ${cond}.</h4></div>`;
+        tmrw = `<div class="tmrw-same"><h4>${tmrwtxt}</h4></div>`;
     } else {
-        tmrw = `<div class="bg-warning tmrw-warm"><h4>Tomorrow is forecast to be ${tmrw}&nbsp;${dgrs}&nbsp;warmer than today,&nbsp;and conditions will be ${cond}.</h4></div>`;
+        tmrw = `<div class="bg-warning tmrw-warm"><h4>${tmrwtxt}</h4></div>`;
     }
     
     if (wxupdated.getHours() > 22) {
@@ -97,17 +102,19 @@ function showWeatherData(data) {
     
     let controls = `<div class="text-center">
     <div class="btn-group">
-        <button type="button" class="btn btn-success btn-xs" id="geobtn" onclick="getLocation();setLocTag('Geolocation');">Use Geolocation</button>
+        <!--<button type="button" class="btn btn-success btn-xs" id="geobtn" onclick="getLocation();setLocTag('Geolocation');">Use Geolocation</button>-->
         <button type="button" class="btn btn-warning btn-xs" onclick="wxEntry();">Change Location</button>
-        <div class="btn-group dropup">
+        <div class="btn-group dropdown">
             <button type="button" class="btn btn-warning btn-xs dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <span class="caret"></span>
             </button>
             <ul class="dropdown-menu">
+                <li><a onclick='getLocation();setLocTag("Geolocation");' class="awnhref">Use Geolocation</a></li>
                 <li><a onclick='weather("PWS:KCAATASC45");setLocTag("home");' class="awnhref">Home</a></li>
                 <li><a onclick='weather(93422);setLocTag("atas");' class="awnhref">Atascadero</a></li>
                 <li><a onclick='weather(93401);setLocTag("slo");' class="awnhref">SLO</a></li>
                 <li><a onclick='weather("PWS:KCASANLU39");setLocTag("cp");' class="awnhref">Cal Poly</a></li>
+                <li><a onclick='weather("35.295466,-120.684256");setLocTag("rosita");' class="awnhref">Rosita</a></li>
             </ul>
         </div>
     </div>
@@ -131,8 +138,15 @@ function showWeatherData(data) {
     <div class="location"><p>${cu.display_location.city}</p></div>
     <span id="loctag" class="${color} noselect">${locTag}</span>
     <div id="controls">${controls}</div>
-    <h3>${cu.weather}</h3>
-    <h4>${cu.temp_f} &deg;F | ${wind} MPH | ${cu.relative_humidity}</h4>
+    <table class='table noselect cctable'>
+    <tr class="wxfct bg-primary">
+    <td class="br-topleft"><p class="h3s">${cu.weather}</p></td>
+    <td class="br-topright"><p class="h3s">${cu.temp_f}&deg;F</p></td>
+    </tr>
+    <tr class="wxfct bg-primary">
+    <td class="br-bottomleft"><p class="h4s">${wind}</p></td>
+    <td class="br-bottomright"><p class="h4s">${cu.relative_humidity}</p></td>
+    </tr></table>
     ${tmrw}
     <h3>10 Day Forecast</h3>
     <div>${tenday}</div>
@@ -246,6 +260,10 @@ function setLocTag(loc) {
         break;
     case "cp":
         locTag = "Cal Poly";
+        color = "bg-danger";
+        break;
+    case "rosita":
+        locTag = "Rosita";
         color = "bg-danger";
         break;
     case "Geolocation":
