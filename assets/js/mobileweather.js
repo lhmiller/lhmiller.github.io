@@ -133,10 +133,10 @@ function showWeatherData(data) {
     <div id="controls">${controls}</div>
     <h4>Conditions are ${cu.weather.toLowerCase()}</h4>
     <h4>${cu.temp_f} &deg;F | ${wind} MPH | ${cu.relative_humidity}</h4>
+    ${tmrw}
     <h3>10 Day Forecast</h3>
     <div>${tenday}</div>
     ${almanac}
-    ${tmrw}
                         `);
 }
 
