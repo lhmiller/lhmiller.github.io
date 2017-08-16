@@ -41,7 +41,7 @@ function weather(loc) {
 
     jQuery.ajax({
         // url: `https://api.wunderground.com/api/2fc23ac9e477ca80/conditions/astronomy/forecast10day/q/${wxLoc}.json`,
-        url: `http://127.0.0.1:8080/weather.json`,
+        url: `/weather.json`,
         type: 'GET',
         success: function(resultData) {
             showWeatherData(resultData);
