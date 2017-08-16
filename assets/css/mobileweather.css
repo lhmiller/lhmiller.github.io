@@ -19,19 +19,19 @@
 }
 .footer {
     padding: 10px;
-    position: fixed;
-    bottom: 0;
+    /* position: fixed; */
+    /* bottom: 0; */
     width: 100%;
 }
 #weather {
     max-width: 1250px;
     margin: 0 auto;
     padding: 10px;
-    border-radius: 15px;
-    margin-bottom: 125px;
+    /* border-radius: 15px; */
+    /* margin-bottom: 88px; */
     background-color: #1F3347;
     position: relative;
-    margin-top: 10px;
+    /* margin-top: 10px; */
 }
 .wxfct {
     border-radius: 10px;
@@ -62,7 +62,8 @@
     /* display: inline-block; */
     padding: 5px 15px;
     border-radius: 10px;
-    margin: 5px;
+    /* margin: 5px; */
+    margin: 21px 5px 5px 5px;
     /* position: absolute; */
     /* width: 250px; */
     /* top: 25px; */
@@ -114,6 +115,8 @@
 .tenday {
     border-collapse:separate; 
     border-spacing: 0px 5px;
+    margin-bottom: 10px;
+    /* margin-top: 10.5px; */
 }
 
 .rounded-left {
@@ -122,4 +125,8 @@
 
 .rounded-right {
     border-radius: 0px 10px 10px 0px;
+}
+
+.location {
+    font-size: 5vw;
 }

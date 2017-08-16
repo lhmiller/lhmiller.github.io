@@ -40,8 +40,8 @@ function weather(loc) {
     location.hash = encodeURIComponent(wxLoc);
 
     jQuery.ajax({
-        // url: `https://api.wunderground.com/api/2fc23ac9e477ca80/conditions/astronomy/forecast10day/q/${wxLoc}.json`,
-        url: `/weather.json`,
+        url: `https://api.wunderground.com/api/2fc23ac9e477ca80/conditions/astronomy/forecast10day/q/${wxLoc}.json`,
+        // url: `/weather.json`,
         type: 'GET',
         success: function(resultData) {
             showWeatherData(resultData);
@@ -124,14 +124,14 @@ function showWeatherData(data) {
         tenday += `${fc[i].avewind.dir}<br>POP: ${fc[i].pop}&#37;</td>`;
         tenday += `</tr>`;
     }
-    tenday += "<td class='spacertd'></tr></table>"
+    tenday += "</tr></table>"
     wxupdated = `${wxupdated.getFullYear()}-${wxmo}-${wxdy}&nbsp;at&nbsp;${twelveHour(wxhr)}:${wxmn}&nbsp;${ampm(wxhr)}`;
     $('#weather-version').html(`<strong>Weather data updated ${wxupdated}</strong>`);
     $('#weather').html(`
-    <h4>${cu.display_location.city}</h4>
+    <div class="location"><p>${cu.display_location.city}</p></div>
     <span id="loctag" class="${color} noselect">${locTag}</span>
     <div id="controls">${controls}</div>
-    <h4>Conditions are ${cu.weather.toLowerCase()}</h4>
+    <h3>${cu.weather}</h3>
     <h4>${cu.temp_f} &deg;F | ${wind} MPH | ${cu.relative_humidity}</h4>
     ${tmrw}
     <h3>10 Day Forecast</h3>
