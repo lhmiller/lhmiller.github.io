@@ -56,6 +56,7 @@
     -khtml-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
+    user-select: none;
     cursor: default;
 }
 .tmrw-same, .tmrw-warm, .tmrw-cool {
@@ -143,4 +144,8 @@
 
 .br-bottomleft {
     border-bottom-left-radius: 10px;
+}
+
+.tablevertcenter {
+    vertical-align: middle !important;
 }

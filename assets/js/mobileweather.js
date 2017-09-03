@@ -1,5 +1,6 @@
 var locTag = "Geolocation", color = "bg-success", roundedLocationData;
 var wxdata;
+var hourlyshown = true;
 
 function showWeather() {
     'use strict';
@@ -41,7 +42,7 @@ function weather(loc) {
     location.hash = encodeURIComponent(wxLoc);
 
     jQuery.ajax({
-        url: `https://api.wunderground.com/api/2fc23ac9e477ca80/conditions/astronomy/forecast10day/q/${wxLoc}.json`,
+        url: `https://api.wunderground.com/api/2fc23ac9e477ca80/conditions/astronomy/forecast10day/hourly/q/${wxLoc}.json`,
         // url: `/weather.json`,
         type: 'GET',
         success: function(resultData) {
@@ -55,6 +56,7 @@ function showWeatherData(data) {
     wxdata = data;
     var cu = data.current_observation,
         fc = data.forecast.simpleforecast.forecastday,
+        ho = data.hourly_forecast,
         wxupdated = new Date(cu.observation_time_rfc822),
         wxmo = addZero(wxupdated.getMonth() + 1),
         wxdy = addZero(wxupdated.getDate()),
@@ -65,7 +67,10 @@ function showWeatherData(data) {
         cond = fc[1].conditions.toLowerCase(),
         wind,
         dgrs = "degree" + plural(tmrw),
-        stdy;
+        stdy,
+        fr,
+        wp,
+        wt;
     
     if (cu.wind_mph === 0 && cu.wind_gust_mph === 0) {
         wind = "none";
@@ -81,6 +86,17 @@ function showWeatherData(data) {
         wind = "";
     } else if (cu.wind_mph === cu.wind_gust_mph) {
         wind = cu.wind_mph + " MPH";
+    }
+
+    if (wind === "") {
+        wt = `<tr class="wxfct bg-primary">
+        <td colspan="2" class="br-bottomleft br-bottomright "><p class="h4s">${cu.relative_humidity}</p></td>
+        </tr>`;
+    } else {
+        wt = `<tr class="wxfct bg-primary">
+        <td class="br-bottomleft"><p class="h4s">${wind}</p></td>
+        <td class="br-bottomright"><p class="h4s">${cu.relative_humidity}</p></td>
+        </tr>`
     }
     
     if (tmrw < 0) {
@@ -131,7 +147,21 @@ function showWeatherData(data) {
         tenday += `${fc[i].avewind.dir}<br>POP: ${fc[i].pop}&#37;</td>`;
         tenday += `</tr>`;
     }
-    tenday += "</tr></table>"
+    tenday += "</tr></table>";
+
+    let hourly = "<table class='table noselect tenday hourly'><tr>";
+    for (let i = 0; i < ho.length; i++) {
+        fr = ho[i].temp.english == ho[i].feelslike.english ? `<td><h4>${ho[i].temp.english} &deg;F</h4></td>` : `<td>${ho[i].temp.english} &deg;F<br>Feels like ${ho[i].feelslike.english} &deg;F</td>`;
+        wp = ho[i].pop == 0 ? `<td class="rounded-right tablevertcenter">${ho[i].wspd.english} MPH ${ho[i].wdir.dir}</td>` : `<td class="rounded-right tablevertcenter">${ho[i].wspd.english} MPH ${ho[i].wdir.dir}<br>POP: ${ho[i].pop}&#37;</td>`;
+        hourly += `<tr class="wxfct bg-primary"><td class="rounded-left">`;
+        hourly += `<strong>${ho[i].FCTTIME.civil}</strong><br>${ho[i].FCTTIME.weekday_name_abbrev} ${ho[i].FCTTIME.mon_abbrev} ${ho[i].FCTTIME.mday}</td>`;
+        hourly += `<td><img class='wxico' src='https://icons.wxug.com/i/c/v4/${ho[i].icon}.svg'></td>`;
+        hourly += fr;
+        hourly += wp;
+        hourly += `</tr>`;
+    }
+    hourly += "</tr></table>";
+
     wxupdated = `${wxupdated.getFullYear()}-${wxmo}-${wxdy}&nbsp;at&nbsp;${twelveHour(wxhr)}:${wxmn}&nbsp;${ampm(wxhr)}`;
     $('#weather-version').html(`<strong>Weather data updated ${wxupdated}</strong>`);
     $('#weather').html(`
@@ -143,15 +173,17 @@ function showWeatherData(data) {
     <td class="br-topleft"><p class="h3s">${cu.weather}</p></td>
     <td class="br-topright"><p class="h3s">${cu.temp_f}&deg;F</p></td>
     </tr>
-    <tr class="wxfct bg-primary">
-    <td class="br-bottomleft"><p class="h4s">${wind}</p></td>
-    <td class="br-bottomright"><p class="h4s">${cu.relative_humidity}</p></td>
-    </tr></table>
+    ${wt}
+    </table>
     ${tmrw}
     <h3>10 Day Forecast</h3>
     <div>${tenday}</div>
+    <div><button type="button" class="btn btn-danger btn-xs" onclick="toggleHourly();">Toggle Hourly</button></div>
+    <h3 class='hourly'>Hourly Forecast</h3>
+    <div>${hourly}</div>
     ${almanac}
                         `);
+    toggleHourly();
 }
 
 function update() {
@@ -273,5 +305,16 @@ function setLocTag(loc) {
     default:
         locTag = loc;
         color = "bg-danger";
+    }
+}
+
+function toggleHourly() {
+    'use strict';
+    if (hourlyshown) {
+        $('.hourly').hide();
+        hourlyshown = false;
+    } else {
+        $('.hourly').show();
+        hourlyshown = true;
     }
 }
