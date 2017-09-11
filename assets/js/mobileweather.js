@@ -64,6 +64,7 @@ function showWeatherData(data) {
         wxmn = addZero(wxupdated.getMinutes()),
         tmrw = fc[1].high.fahrenheit - fc[0].high.fahrenheit,
         tmrwtxt = data.forecast.txt_forecast.forecastday[0].fcttext,
+        tmrwtxtday = data.forecast.txt_forecast.forecastday[0].title,
         cond = fc[1].conditions.toLowerCase(),
         wind,
         dgrs = "degree" + plural(tmrw),
@@ -101,11 +102,11 @@ function showWeatherData(data) {
     
     if (tmrw < 0) {
         tmrw *= -1;
-        tmrw = `<div class="bg-info tmrw-cool"><h4>${tmrwtxt}<h4></div>`;
+        tmrw = `<div class="bg-info tmrw-cool"><h4>${tmrwtxtday}: ${tmrwtxt}<h4></div>`;
     } else if (tmrw === 0) {
-        tmrw = `<div class="tmrw-same"><h4>${tmrwtxt}</h4></div>`;
+        tmrw = `<div class="tmrw-same"><h4>${tmrwtxtday}: ${tmrwtxt}</h4></div>`;
     } else {
-        tmrw = `<div class="bg-warning tmrw-warm"><h4>${tmrwtxt}</h4></div>`;
+        tmrw = `<div class="bg-warning tmrw-warm"><h4>${tmrwtxtday}: ${tmrwtxt}</h4></div>`;
     }
     
     if (wxupdated.getHours() > 22) {
@@ -149,8 +150,11 @@ function showWeatherData(data) {
     }
     tenday += "</tr></table>";
 
-    let hourly = "<table class='table noselect tenday hourly'><tr>";
+    let hourly = "<table class='table noselect tenday hourly'>";
     for (let i = 0; i < ho.length; i++) {
+        if(ho[i].FCTTIME.hour == "0") {
+            hourly += `<tr></tr>`
+        }
         fr = ho[i].temp.english == ho[i].feelslike.english ? `<td><h4>${ho[i].temp.english} &deg;F</h4></td>` : `<td>${ho[i].temp.english} &deg;F<br>Feels like ${ho[i].feelslike.english} &deg;F</td>`;
         wp = ho[i].pop == 0 ? `<td class="rounded-right tablevertcenter">${ho[i].wspd.english} MPH ${ho[i].wdir.dir}</td>` : `<td class="rounded-right tablevertcenter">${ho[i].wspd.english} MPH ${ho[i].wdir.dir}<br>POP: ${ho[i].pop}&#37;</td>`;
         hourly += `<tr class="wxfct bg-primary"><td class="rounded-left">`;
@@ -160,7 +164,7 @@ function showWeatherData(data) {
         hourly += wp;
         hourly += `</tr>`;
     }
-    hourly += "</tr></table>";
+    hourly += "</table>";
 
     wxupdated = `${wxupdated.getFullYear()}-${wxmo}-${wxdy}&nbsp;at&nbsp;${twelveHour(wxhr)}:${wxmn}&nbsp;${ampm(wxhr)}`;
     $('#weather-version').html(`<strong>Weather data updated ${wxupdated}</strong>`);
