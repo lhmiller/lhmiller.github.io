@@ -82,6 +82,7 @@ function updateLinks() {
             ["success", "http://schedules.calpoly.edu/", "Schedules"],
             ["success", "https://my.calpoly.edu/cas/login?service=https://studentpay.calpoly.edu/CASServlet?type=student", "Resnet Timesheet"],
             ["success", "http://catalog.calpoly.edu/", "Catalog"],
+            ["success", "http://catalog.calpoly.edu/previouscatalogs/2015-2017/", "15-17 Catalog"],
             ["success", "http://www.polyratings.com/", "Polyratings"],
             ["danger", "https://my.cuesta.edu/", "My Cuesta"],
             ["danger", "https://ssb.cuesta.edu/prod/syk_class_finder.p_basic_search", "Cuesta Courses"],
