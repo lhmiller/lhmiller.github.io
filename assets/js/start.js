@@ -352,3 +352,10 @@ function setLocTag(loc) {
         color = "bg-danger";
     }
 }
+
+function footerIP() {
+    'use strict';
+    $.getJSON("https://ipinfo.io/", function(data){
+        $('#ip').html(`<strong>Your IP address is ${data.ip}</strong>`)
+    })
+}
