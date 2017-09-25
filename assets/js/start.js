@@ -1,5 +1,13 @@
 var locTag = "Geolocation", color = "bg-success", roundedLocationData;
 
+function getWeek() {
+    'use strict';
+    var curDay = new Date();
+    var base = new Date(2017,8,10);
+    var week = Math.floor((curDay - base)/(1000*60*60*24)/7);
+    $('#week').html(`Week ${week}`);
+}
+
 function showWeather() {
     'use strict';
     location.hash = encodeURIComponent("geolocation");
