@@ -71,7 +71,8 @@ function showWeatherData(data) {
         stdy,
         fr,
         wp,
-        wt;
+        wt,
+        hl;
     
     if (cu.wind_mph === 0 && cu.wind_gust_mph === 0) {
         wind = "none";
@@ -91,12 +92,12 @@ function showWeatherData(data) {
 
     if (wind === "") {
         wt = `<tr class="wxfct bg-primary">
-        <td colspan="2" class="br-bottomleft br-bottomright "><p class="h4s">${cu.relative_humidity}</p></td>
+        <td colspan="2"><p class="h4s">${cu.relative_humidity}</p></td>
         </tr>`;
     } else {
         wt = `<tr class="wxfct bg-primary">
-        <td class="br-bottomleft"><p class="h4s">${wind}</p></td>
-        <td class="br-bottomright"><p class="h4s">${cu.relative_humidity}</p></td>
+        <td><p class="h4s">${wind}</p></td>
+        <td><p class="h4s">${cu.relative_humidity}</p></td>
         </tr>`
     }
     
@@ -166,6 +167,11 @@ function showWeatherData(data) {
     }
     hourly += "</table>";
 
+    hl = `<tr class="wxfct bg-primary">
+    <td class="br-bottomleft"><p class="h4s">High: ${fc[0].high.fahrenheit} &deg;F</p></td>
+    <td class="br-bottomright"><p class="h4s">Low: ${fc[0].low.fahrenheit} &deg;F</p></td>
+    </tr>`;
+
     wxupdated = `${wxupdated.getFullYear()}-${wxmo}-${wxdy}&nbsp;at&nbsp;${twelveHour(wxhr)}:${wxmn}&nbsp;${ampm(wxhr)}`;
     $('#weather-version').html(`<strong>Weather data updated ${wxupdated}</strong>`);
     $('#weather').html(`
@@ -178,6 +184,7 @@ function showWeatherData(data) {
     <td class="br-topright"><p class="h3s">${cu.temp_f}&deg;F</p></td>
     </tr>
     ${wt}
+    ${hl}
     </table>
     ${tmrw}
     <h3>10 Day Forecast</h3>
