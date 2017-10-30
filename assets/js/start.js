@@ -367,3 +367,32 @@ function footerIP() {
         $('#ip').html(`<strong>Your IP address is ${data.ip}</strong>`)
     })
 }
+
+function battery() {
+    navigator.getBattery().then( value => {
+        time = (value.charging == true ? value.chargingTime : value.dischargingTime);
+        status = (value.charging == true ? "charging" : "discharging");
+        if(value.charging) {
+            $("#battery").addClass('charging');
+            $("#battery").removeClass('discharging');
+          } else {
+              $("#battery").addClass('discharging');
+              $("#battery").removeClass('charging');
+          }
+        $('#battery').html(`${value.level * 100}% | ${status} | ${formatTime(time, value.charging)}`);
+        console.log(value);
+      }, reason => {
+        $('#battery').html(``);
+      } );
+}
+
+function formatTime(timeInSeconds, isCharging) {
+    if (timeInSeconds === Infinity || isNaN(timeInSeconds)) {
+      return 'Calculating time remaining'
+    }
+    const hours = Math.floor(timeInSeconds / 3600)
+    const minutes = Math.floor((timeInSeconds % 3600) / 60)
+    zero = (String(minutes).length > 1 ? "" : "0")
+    sign = (isCharging == true ? " until full" : " remaining")
+    return `${hours}:${zero}${minutes}${sign}`
+}
