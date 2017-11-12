@@ -145,7 +145,7 @@ function showWeatherData(data) {
         tenday += `<td><img class='wxico' src='https://icons.wxug.com/i/c/v4/${fc[i].icon}.svg'></td>`;
         tenday += `<td>High: ${fc[i].high.fahrenheit} &deg;F<br>`;
         tenday += `Low: ${fc[i].low.fahrenheit} &deg;F</td>`;
-        tenday += `<td class="rounded-right">Wind: ${fc[i].avewind.mph} MPH `;
+        tenday += `<td class="rounded-right">${fc[i].avewind.mph} MPH `;
         tenday += `${fc[i].avewind.dir}<br>POP: ${fc[i].pop}&#37;</td>`;
         tenday += `</tr>`;
     }
