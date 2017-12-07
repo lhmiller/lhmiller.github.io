@@ -74,7 +74,7 @@ function showWeatherData(data) {
         wt,
         hl;
     
-    if (cu.wind_mph === 0 && cu.wind_gust_mph === 0) {
+    if (cu.wind_mph <= 0 && cu.wind_gust_mph <= 0) {
         wind = "none";
     } else if (cu.wind_mph === 0) {
         wind = cu.wind_gust_mph * 1 + " MPH";

@@ -157,7 +157,8 @@ function showWeatherData(data) {
         cond = fc[1].conditions.toLowerCase(),
         wind,
         dgrs = "degree" + plural(tmrw),
-        stdy;
+        stdy,
+        windText;
     
     if (cu.wind_mph === 0 && cu.wind_gust_mph === 0) {
         wind = 0;
@@ -171,6 +172,12 @@ function showWeatherData(data) {
     
     if (cu.wind_mph === cu.wind_gust_mph) {
         wind = cu.wind_mph;
+    }
+
+    if (cu.wind_mph <= 0) {
+        windText = ``;
+    } else {
+        windText = `| Wind: ${wind} MPH`;
     }
     
     if (tmrw < 0) {
@@ -230,7 +237,7 @@ function showWeatherData(data) {
                         <h2>Weather in ${cu.display_location.city}</h2>
                         <span id="loctag" class="${color} noselect">${locTag}</span>
                         <h4>Conditions are ${cu.weather.toLowerCase()}</h4>
-                        <h4>Temperature: ${cu.temp_f} &deg;F | Wind: ${wind} MPH | Humidity: ${cu.relative_humidity}</h4>
+                        <h4>Temperature: ${cu.temp_f} &deg;F${windText} | Humidity: ${cu.relative_humidity}</h4>
                         <h3>10 Day Forecast</h3>
                         <div>${tenday}</div>
                         `);
