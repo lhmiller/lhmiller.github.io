@@ -42,9 +42,9 @@ function showTime() {
             showTime();
         }, 1000 - millis < 10 ? 1000 : 1000 - millis
             );
-    timeValue += ((minutes < 10) ? " 0" : " ") + minutes;
-    timeValue += ((seconds < 10) ? " 0" : " ") + seconds;
-    timeValue += (hours >= 12) ? " PM" : " AM";
+    timeValue += ((minutes < 10) ? ":0" : ":") + minutes;
+    timeValue += ((seconds < 10) ? ":0" : ":") + seconds;
+    // timeValue += (hours >= 12) ? " PM" : " AM";
     document.getElementById("newClock").innerHTML = timeValue;
 }
 
