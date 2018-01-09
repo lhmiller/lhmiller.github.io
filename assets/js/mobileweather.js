@@ -1,6 +1,7 @@
 var locTag = "Geolocation", color = "bg-success", roundedLocationData;
 var wxdata;
 var hourlyshown = true;
+toggleHourly();
 
 function showWeather() {
     'use strict';
