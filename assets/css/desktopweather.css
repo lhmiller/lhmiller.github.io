@@ -1,0 +1,151 @@
+.jumbotron {
+    padding-top: 0px;
+    padding-bottom: 15px;
+}
+.clock {
+    font-size: 7vw;
+}
+.date {
+    font-size: 2.25vmax;
+}
+.countdown {
+    font-size: .9vmax;
+}
+.block-padded {
+    padding-top: 10px;
+}
+.btn {
+    margin-bottom: 5px;
+}
+.footer {
+    padding: 10px;
+    /* position: fixed; */
+    /* bottom: 0; */
+    width: 100%;
+}
+#weather {
+    max-width: 90%;
+    margin: 0 auto;
+    padding: 10px;
+    /* border-radius: 15px; */
+    /* margin-bottom: 88px; */
+    background-color: #1F3347;
+    position: relative;
+    /* margin-top: 10px; */
+}
+.wxfct {
+    border-radius: 10px;
+    margin: 10px 0px;
+    font-weight: bold;
+}
+/* .wxfct:hover {
+    background-color: #29445F;
+} */
+.spacertd {
+    width: 1px;
+}
+.wxico {
+    width: 40px;
+}
+.linksdiv {
+    margin-bottom: 25px;
+}
+.noselect {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    cursor: default;
+}
+.tmrw-same, .tmrw-warm, .tmrw-cool {
+    padding: 5px 15px;
+    border-radius: 10px;
+    /* margin: 5px; */
+    margin: 21px 0px 5px 0px;
+    /* position: absolute; */
+    /* width: 250px; */
+    /* top: 25px; */
+    /* right: 25px; */
+}
+
+.tmrw-same {
+    background-color: #027154;
+}
+
+.almanac {
+    /* display: inline-block; */
+    padding: 5px 15px;
+    border-radius: 10px;
+    margin: 5px 0px 5px 0px;
+    /* position: absolute; */
+    /* width: 250px; */
+    /* top: 25px; */
+    /* left: 25px; */
+}
+
+.awnhref {
+    cursor: pointer;
+}
+
+#loctag {
+    padding: 5px 15px;
+    border-radius: 10px;
+}
+
+#controls {
+    margin-top: 15px;
+}
+
+.tenday {
+    border-collapse:separate; 
+    border-spacing: 0px 5px;
+    margin-bottom: 10px;
+}
+
+.rounded-left {
+    border-radius: 10px 0px 0px 10px;
+}
+
+.rounded-right {
+    border-radius: 0px 10px 10px 0px;
+}
+
+.location {
+    font-size: 5vw;
+}
+
+.h3s {
+    font-size: 26px;
+    margin-bottom: 0px;
+}
+
+.h4s {
+    font-size: 19px;
+    margin-bottom: 0px;
+}
+
+.cctable {
+    margin-top: 10.5px;
+}
+
+.br-topleft {
+    border-top-left-radius: 10px;
+}
+
+.br-topright {
+    border-top-right-radius: 10px;
+}
+
+.br-bottomright {
+    border-bottom-right-radius: 10px;
+}
+
+.br-bottomleft {
+    border-bottom-left-radius: 10px;
+}
+
+.tablevertcenter {
+    vertical-align: middle !important;
+}
