@@ -386,7 +386,7 @@ function battery() {
               $("#battery").addClass('discharging');
               $("#battery").removeClass('charging');
           }
-        $('#battery').html(`${value.level * 100}% | ${status} | ${formatTime(time, value.charging)}`);
+        $('#battery').html(`${Math.round(value.level * 100)}% | ${status} | ${formatTime(time, value.charging)}`);
         console.log(value);
       }, reason => {
         $('#battery').html(``);
