@@ -378,15 +378,26 @@ function footerIP() {
 function battery() {
     navigator.getBattery().then( value => {
         time = (value.charging == true ? value.chargingTime : value.dischargingTime);
-        status = (value.charging == true ? "charging" : "discharging");
-        if(value.charging) {
+        var timeRemaining, status;
+        if(value.charging && value.level == 1) {
             $("#battery").addClass('charging');
             $("#battery").removeClass('discharging');
-          } else {
-              $("#battery").addClass('discharging');
-              $("#battery").removeClass('charging');
-          }
-        $('#battery').html(`${Math.round(value.level * 100)}% | ${status} | ${formatTime(time, value.charging)}`);
+            status = " | charged";
+        } else if(value.charging) {
+            $("#battery").addClass('charging');
+            $("#battery").removeClass('discharging');
+            status = " | charging";
+        } else {
+            $("#battery").addClass('discharging');
+            $("#battery").removeClass('charging');
+            status = " | charging";
+      }
+        if(value.level = 1) {
+            timeRemaining = ``;
+        } else {
+            timeRemaining = ` | ${formatTime(time, value.charging)}`;
+        }
+        $('#battery').html(`${Math.round(value.level * 100)}%${status}${timeRemaining}`);
         console.log(value);
       }, reason => {
         $('#battery').html(``);
