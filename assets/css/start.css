@@ -116,15 +116,3 @@
     top: 10px;
     right: 20px;
 }
-
-.charging {
-    border-style: solid;
-    border-width: 0px 0px 5px 0px;
-    border-color: green;
-}
-
-.discharging {
-    border-style: solid;
-    border-width: 0px 0px 5px 0px;
-    border-color: red;
-}

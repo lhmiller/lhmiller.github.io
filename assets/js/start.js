@@ -1,12 +1,13 @@
 var locTag = "Geolocation", color = "bg-success", roundedLocationData;
 
-// function getWeek() {
-//     'use strict';
-//     var curDay = new Date();
-//     var base = new Date(2017,8,10);
-//     var week = Math.floor((curDay - base)/(1000*60*60*24)/7);
-//     $('#week').html(`Week ${week}`);
-// }
+function getWeek() {
+    'use strict';
+    var curDay = new Date();
+    console.log(curDay);
+    var base = new Date(2018,2,25);
+    var week = Math.floor((curDay - base)/(1000*60*60*24)/7);
+    $('#week').html(`Week ${week}`);
+}
 
 function showWeather() {
     'use strict';
@@ -18,6 +19,7 @@ function hideWeather() {
     'use strict';
     location.hash = "noweather";
     $('#weather').hide();
+    $('#weather-version').hide();
     $('#wxShowButton').show();
 }
 
@@ -71,15 +73,16 @@ function updateLinks() {
             // ["danger", "https://www.gmail.com/", "Gmail"],
             // ["danger", "https://drive.google.com/", "Drive"],
             // ["danger", "https://calendar.google.com/", "Calendar"],
-            ["info", "https://docs.google.com/spreadsheets/d/1e6uSnEvF8KesepUI2IMivxA_RQcrPU1OOI0PFVKqor4/", "Grades"],
-            ["info", "https://docs.google.com/spreadsheets/d/1eEiRDzKS6eCE8oAOYBbb9aAxYFubfTTpxwkrl6k9BuI/", "Degree Progress"],
-            ["info", "https://docs.google.com/spreadsheets/d/1fzjQ8DVAv8ZOfjONMBP3YoFqLj6CyxZQCmVkf-kS9F0/", "MINDBODY Hours"],
-            ["warning", "https://internal.housing.calpoly.edu/", "UH Internal"],
-            ["warning", "https://backupclearpass.netadm.calpoly.edu/tips/tipsLogin.action", "ClearPass"],
-            ["warning", "https://prtg.lucashmiller.com/", "PRTG"],
-            ["warning", "https://unifi.lucashmiller.com/", "UniFi Controller"],
-            ["warning", "http://edge.lucashmiller.com:8080/", "eGauge"],
-            ["warning", "http://edge.lucashmiller.com/", "EdgeRouter"]
+            // ["info", "https://docs.google.com/spreadsheets/d/1e6uSnEvF8KesepUI2IMivxA_RQcrPU1OOI0PFVKqor4/", "Grades"],
+            // ["info", "https://docs.google.com/spreadsheets/d/1ic1F_fG1ryueFbHAbR_uRyAe_mzkfYIAdoJzZwCHkK4/", "Money"],
+            // ["info", "https://docs.google.com/spreadsheets/d/1_eUtZsjYfYTlUJuHrQh8PiwMQxT-r7TvytOHiWskE0A/", "CP"],
+            // ["info", "https://docs.google.com/spreadsheets/d/1fzjQ8DVAv8ZOfjONMBP3YoFqLj6CyxZQCmVkf-kS9F0/", "MINDBODY Hours"],
+            // ["warning", "https://internal.housing.calpoly.edu/", "UH Internal"],
+            // ["warning", "https://backupclearpass.netadm.calpoly.edu/tips/tipsLogin.action", "ClearPass"],
+            // ["warning", "https://prtg.lucashmiller.com/", "PRTG"],
+            // ["warning", "https://unifi.lucashmiller.com/", "UniFi Controller"],
+            // ["warning", "http://edge.lucashmiller.com:8080/", "eGauge"],
+            // ["warning", "http://edge.lucashmiller.com/", "EdgeRouter"]
         ],
         [
             ["success", "https://my.calpoly.edu", "My Cal Poly"],
@@ -88,12 +91,12 @@ function updateLinks() {
             ["success", "https://polyplanner.calpoly.edu/", "PolyPlanner"],
             ["success", "https://dashboards.calpoly.edu/dw/polydata/student_poly_profile_self_svc.display", "PolyProfile"],
             ["success", "http://schedules.calpoly.edu/", "Schedules"],
-            ["success", "https://my.calpoly.edu/cas/login?service=https://studentpay.calpoly.edu/CASServlet?type=student", "Resnet Timesheet"],
+            // ["success", "https://my.calpoly.edu/cas/login?service=https://studentpay.calpoly.edu/CASServlet?type=student", "Resnet Timesheet"],
             ["success", "http://catalog.calpoly.edu/", "Catalog"],
             ["success", "http://catalog.calpoly.edu/previouscatalogs/2015-2017/", "15-17 Catalog"],
             ["success", "http://www.polyratings.com/", "Polyratings"],
-            ["danger", "https://my.cuesta.edu/", "My Cuesta"],
-            ["danger", "https://ssb.cuesta.edu/prod/syk_class_finder.p_basic_search", "Cuesta Courses"],
+            // ["danger", "https://my.cuesta.edu/", "My Cuesta"],
+            // ["danger", "https://ssb.cuesta.edu/prod/syk_class_finder.p_basic_search", "Cuesta Courses"],
         ],
         [
             // ["warning", "https://resnetcontroller2.netadm.calpoly.edu:4343/", "PCV Controller"],
@@ -109,7 +112,7 @@ function updateLinks() {
         goog += `<a class="btn btn-${links[0][link][0]}" role="button" href="${links[0][link][1]}">${links[0][link][2]}</a>`;
     }
     
-    document.getElementById("goog").innerHTML = goog;
+    // document.getElementById("goog").innerHTML = goog;
     
     var poly = "";
     for (var link in links[1]) {
@@ -377,28 +380,17 @@ function footerIP() {
 
 function battery() {
     navigator.getBattery().then( value => {
-        time = (value.charging == true ? value.chargingTime : value.dischargingTime);
-        var timeRemaining, status;
-        if(value.charging && value.level == 1) {
-            $("#battery").addClass('charging');
-            $("#battery").removeClass('discharging');
-            status = " | charged";
-        } else if(value.charging) {
-            $("#battery").addClass('charging');
-            $("#battery").removeClass('discharging');
-            status = " | charging";
+        var timeRemaining, pct = Math.round(value.level * 100), status = value.charging, output;
+        timeRemaining = formatTime((value.charging == true ? value.chargingTime : value.dischargingTime),status);
+        if (pct == 100) {
+            output = "<span style='color:green;'>&#9679;&nbsp;</span><span>Fully charged</span>";
+        } else if (status) {
+            output = "<span style='color:orange;'>&#9679;&nbsp;</span><span>" + pct + "% | charging | " + timeRemaining;
         } else {
-            $("#battery").addClass('discharging');
-            $("#battery").removeClass('charging');
-            status = " | charging";
-      }
-        if(value.level = 1) {
-            timeRemaining = ``;
-        } else {
-            timeRemaining = ` | ${formatTime(time, value.charging)}`;
+            output = "<span style='color:red;'>&#9679;&nbsp;</span><span>" + pct + "% | discharging | " + timeRemaining;
         }
-        $('#battery').html(`${Math.round(value.level * 100)}%${status}${timeRemaining}`);
-        console.log(value);
+
+        $('#battery').html(`${output}`);
       }, reason => {
         $('#battery').html(``);
       } );
@@ -411,6 +403,6 @@ function formatTime(timeInSeconds, isCharging) {
     const hours = Math.floor(timeInSeconds / 3600)
     const minutes = Math.floor((timeInSeconds % 3600) / 60)
     zero = (String(minutes).length > 1 ? "" : "0")
-    sign = (isCharging == true ? " until full" : " remaining")
+    sign = (isCharging == true ? " until full" : " until empty")
     return `${hours}:${zero}${minutes}${sign}`
 }
