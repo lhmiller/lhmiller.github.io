@@ -87,6 +87,7 @@ function updateLinks() {
         [
             ["success", "https://my.calpoly.edu", "My Cal Poly"],
             ["success", "https://my.calpoly.edu/cas/login?service=https://cmsweb.calpoly.edu/psp/HSLOPRD/EMPLOYEE/HRMS/c/SA_LEARNER_SERVICES.SSS_STUDENT_CENTER.GBL?FolderPath=PORTAL_ROOT_OBJECT.CO_EMPLOYEE_SELF_SERVICE.HC_SSS_STUDENT_CENTER%26IsFolder=false%26IgnoreParamTempl=FolderPath%2cIsFolder%26RL=%26target=main0%26navc=2398?cmd=login%26languageCd=ENG%26userid=PS%26pwd=z", "Student Center"],
+            ["success", "https://idp.calpoly.edu/idp/profile/cas/login?service=https://cmsweb.calpoly.edu/psp/CSLOPRD/EMPLOYEE/SA/c/SA_LEARNER_SERVICES.SSS_STUDENT_CENTER.GBL?FolderPath=PORTAL_ROOT_OBJECT.CO_EMPLOYEE_SELF_SERVICE.HC_SSS_STUDENT_CENTER%26IsFolder=false%26IgnoreParamTempl=FolderPath%2cIsFolder%26RL=%26target=main0%26navc=2398?cmd=login%26languageCd=ENG%26userid=PS%26pwd=z&method=post", "Student Center"],
             ["success", "https://pass.calpoly.edu/login.do", "PASS"],
             ["success", "https://polyplanner.calpoly.edu/", "PolyPlanner"],
             ["success", "https://dashboards.calpoly.edu/dw/polydata/student_poly_profile_self_svc.display", "PolyProfile"],
