@@ -134,6 +134,7 @@ function showWeatherData(data) {
                 <li><a onclick='weather(93401);setLocTag("slo");' class="awnhref">SLO</a></li>
                 <li><a onclick='weather("PWS:KCASANLU39");setLocTag("cp");' class="awnhref">Cal Poly</a></li>
                 <li><a onclick='weather("35.295466,-120.684256");setLocTag("rosita");' class="awnhref">Rosita</a></li>
+                <li><a onclick='weather("33.652385,-117.753912");setLocTag("irvine");' class="awnhref">Irvine</a></li>
             </ul>
         </div>
     </div>
@@ -308,6 +309,10 @@ function setLocTag(loc) {
         break;
     case "rosita":
         locTag = "Rosita";
+        color = "bg-danger";
+        break;
+    case "irvine":
+        locTag = "Irvine";
         color = "bg-danger";
         break;
     case "Geolocation":
