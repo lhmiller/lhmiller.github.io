@@ -1,3 +1,5 @@
+var ipData;
+
 function ip() {
     'use strict';
     let ip = "https://ipinfo.io/" + location.hash.substr(1,location.hash.length);
@@ -12,5 +14,6 @@ function ip() {
         }
         $('#org').html(`${data.org}`);
         $('#loc').html(`${data.region}, ${data.country}`);
+        ipData = data;
     });
 }
