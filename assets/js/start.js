@@ -4,7 +4,7 @@ function getWeek() {
     'use strict';
     var curDay = new Date();
     // console.log(curDay);
-    var base = new Date(2018,2,25);
+    var base = new Date(2018,8,16);
     var week = Math.floor((curDay - base)/(1000*60*60*24)/7);
     $('#week').html(`Week ${week}`);
 }
