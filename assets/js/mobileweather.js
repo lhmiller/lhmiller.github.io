@@ -73,7 +73,8 @@ function showWeatherData(data) {
         fr,
         wp,
         wt,
-        hl;
+        hl,
+        qpf;
     
     if (cu.wind_mph <= 0 && cu.wind_gust_mph <= 0) {
         wind = "none";
@@ -142,13 +143,14 @@ function showWeatherData(data) {
 
     let tenday = "<table class='table noselect tenday'><tr>";
     for (let i = stdy; i < fc.length; i++) {
+        qpf = fc[i].qpf_allday.in == 0 ? `` : `&nbsp;&#40;${fc[i].qpf_allday.in}&#34;&#41;`;
         tenday += `<tr class="wxfct bg-primary"><td class="rounded-left">${fc[i].date.weekday_short}<br>`;
         tenday += `${fc[i].date.month}/${fc[i].date.day}</td>`;
         tenday += `<td><img class='wxico' src='https://icons.wxug.com/i/c/v4/${fc[i].icon}.svg'></td>`;
         tenday += `<td>High: ${fc[i].high.fahrenheit} &deg;F<br>`;
         tenday += `Low: ${fc[i].low.fahrenheit} &deg;F</td>`;
-        tenday += `<td class="rounded-right">${fc[i].avewind.mph} MPH `;
-        tenday += `${fc[i].avewind.dir}<br>POP: ${fc[i].pop}&#37;</td>`;
+        tenday += `<td class="rounded-right tablevertcenter">${fc[i].avewind.mph} MPH `;
+        tenday += fc[i].pop == 0 ? `${fc[i].avewind.dir}` : `${fc[i].avewind.dir}<br>${fc[i].pop}&#37;${qpf}</td>`;
         tenday += `</tr>`;
     }
     tenday += "</tr></table>";
@@ -159,7 +161,8 @@ function showWeatherData(data) {
             hourly += `<tr></tr>`
         }
         fr = ho[i].temp.english == ho[i].feelslike.english ? `<td><h4>${ho[i].temp.english} &deg;F</h4></td>` : `<td>${ho[i].temp.english} &deg;F<br>Feels like ${ho[i].feelslike.english} &deg;F</td>`;
-        wp = ho[i].pop == 0 ? `<td class="rounded-right tablevertcenter">${ho[i].wspd.english} MPH ${ho[i].wdir.dir}</td>` : `<td class="rounded-right tablevertcenter">${ho[i].wspd.english} MPH ${ho[i].wdir.dir}<br>POP: ${ho[i].pop}&#37;</td>`;
+        qpf = ho[i].qpf.english == 0 ? `` : `&nbsp;&#40;${ho[i].qpf.english}&#34;&#41;` ;
+        wp = ho[i].pop == 0 ? `<td class="rounded-right tablevertcenter">${ho[i].wspd.english} MPH ${ho[i].wdir.dir}</td>` : `<td class="rounded-right tablevertcenter">${ho[i].wspd.english} MPH ${ho[i].wdir.dir}<br>${ho[i].pop}&#37;${qpf}</td>`;
         hourly += `<tr class="wxfct bg-primary"><td class="rounded-left">`;
         hourly += `<strong>${ho[i].FCTTIME.civil}</strong><br>${ho[i].FCTTIME.weekday_name_abbrev} ${ho[i].FCTTIME.mon_abbrev} ${ho[i].FCTTIME.mday}</td>`;
         hourly += `<td><img class='wxico' src='https://icons.wxug.com/i/c/v4/${ho[i].icon}.svg'></td>`;
