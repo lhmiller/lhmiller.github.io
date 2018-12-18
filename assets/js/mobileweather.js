@@ -134,8 +134,8 @@ function showWeatherData(data) {
                 <li><a onclick='weather(93422);setLocTag("atas");' class="awnhref">Atascadero</a></li>
                 <li><a onclick='weather(93401);setLocTag("slo");' class="awnhref">SLO</a></li>
                 <li><a onclick='weather("PWS:KCASANLU39");setLocTag("cp");' class="awnhref">Cal Poly</a></li>
-                <li><a onclick='weather("35.295466,-120.684256");setLocTag("rosita");' class="awnhref">Rosita</a></li>
-                <li><a onclick='weather("33.652385,-117.753912");setLocTag("irvine");' class="awnhref">Irvine</a></li>
+                <li><a onclick='weather("35.294078,-120.670933");setLocTag("fh");' class="awnhref">FH</a></li>
+                <li><a onclick='weather("37.225830,-119.156667");setLocTag("cpeak");' class="awnhref">China Peak</a></li>
             </ul>
         </div>
     </div>
@@ -310,12 +310,12 @@ function setLocTag(loc) {
         locTag = "Cal Poly";
         color = "bg-danger";
         break;
-    case "rosita":
-        locTag = "Rosita";
+    case "fh":
+        locTag = "FH";
         color = "bg-danger";
         break;
-    case "irvine":
-        locTag = "Irvine";
+    case "cpeak":
+        locTag = "China Peak";
         color = "bg-danger";
         break;
     case "Geolocation":
