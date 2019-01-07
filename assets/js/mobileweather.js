@@ -139,7 +139,13 @@ function showWeatherData(data) {
 
     let tenday = "<table class='table noselect tenday'><tr>";
     for (let i = stdy; i < fc.length; i++) {
-        qpf = fc[i].qpf_allday.in == 0 ? `` : `&nbsp;&#40;${fc[i].qpf_allday.in}&#34;&#41;`;
+        if (fc[i].snow_allday.in > 0 ) {
+            qpf = `&nbsp;&#40;<i>${fc[i].snow_allday.in}&#34;</i>&#41;`;
+        } else if (fc[i].qpf_allday.in > 0) {
+            qpf = `&nbsp;&#40;${fc[i].qpf_allday.in}&#34;&#41;`;
+        } else {
+            qpf = ``
+        }
         tenday += `<tr class="wxfct bg-primary"><td class="rounded-left">${fc[i].date.weekday_short}<br>`;
         tenday += `${fc[i].date.month}/${fc[i].date.day}</td>`;
         tenday += `<td><img class='wxico' src='https://icons.wxug.com/i/c/v4/${fc[i].icon}.svg'></td>`;
@@ -157,7 +163,13 @@ function showWeatherData(data) {
             hourly += `<tr></tr>`
         }
         fr = ho[i].temp.english == ho[i].feelslike.english ? `<td><h4>${ho[i].temp.english} &deg;F</h4></td>` : `<td>${ho[i].temp.english} &deg;F<br>Feels like ${ho[i].feelslike.english} &deg;F</td>`;
-        qpf = ho[i].qpf.english == 0 ? `` : `&nbsp;&#40;${ho[i].qpf.english}&#34;&#41;` ;
+        if (ho[i].snow.english > 0 ) {
+            qpf = `&nbsp;&#40;<i>${ho[i].snow.english}&#34;</i>&#41;`;
+        } else if (ho[i].qpf.english > 0) {
+            qpf = `&nbsp;&#40;${ho[i].qpf.english}&#34;&#41;`;
+        } else {
+            qpf = ``
+        }
         wp = ho[i].pop == 0 ? `<td class="rounded-right tablevertcenter">${ho[i].wspd.english} MPH ${ho[i].wdir.dir}</td>` : `<td class="rounded-right tablevertcenter">${ho[i].wspd.english} MPH ${ho[i].wdir.dir}<br>${ho[i].pop}&#37;${qpf}</td>`;
         hourly += `<tr class="wxfct bg-primary"><td class="rounded-left">`;
         hourly += `<strong>${ho[i].FCTTIME.civil}</strong><br>${ho[i].FCTTIME.weekday_name_abbrev} ${ho[i].FCTTIME.mon_abbrev} ${ho[i].FCTTIME.mday}</td>`;
