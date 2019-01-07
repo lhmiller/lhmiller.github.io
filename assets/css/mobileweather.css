@@ -47,6 +47,9 @@
 .wxico {
     width: 40px;
 }
+.wxicolg {
+    width: 60px;
+}
 .linksdiv {
     margin-bottom: 25px;
 }
@@ -136,6 +139,7 @@
 
 .br-topright {
     border-top-right-radius: 10px;
+    vertical-align: middle !important;
 }
 
 .br-bottomright {

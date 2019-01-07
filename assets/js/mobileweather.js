@@ -93,14 +93,10 @@ function showWeatherData(data) {
     }
 
     if (wind === "") {
-        wt = `<tr class="wxfct bg-primary">
-        <td colspan="2"><p class="h4s">${cu.relative_humidity}</p></td>
-        </tr>`;
+        wt = `<td colspan="2"><p class="h3s">${cu.relative_humidity}</p></td>`;
     } else {
-        wt = `<tr class="wxfct bg-primary">
-        <td><p class="h4s">${wind}</p></td>
-        <td><p class="h4s">${cu.relative_humidity}</p></td>
-        </tr>`
+        wt = `<td><p class="h3s">${wind}</p></td>
+        <td><p class="h3s">${cu.relative_humidity}</p></td>`
     }
     
     if (tmrw < 0) {
@@ -173,8 +169,8 @@ function showWeatherData(data) {
     hourly += "</table>";
 
     hl = `<tr class="wxfct bg-primary">
-    <td class="br-bottomleft"><p class="h4s">High: ${fc[0].high.fahrenheit} &deg;F</p></td>
-    <td class="br-bottomright"><p class="h4s">Low: ${fc[0].low.fahrenheit} &deg;F</p></td>
+    <td class="br-bottomleft"><p class="h3s">High: ${fc[0].high.fahrenheit} &deg;F</p></td>
+    <td class="br-bottomright" colspan=2><p class="h3s">Low: ${fc[0].low.fahrenheit} &deg;F</p></td>
     </tr>`;
 
     wxupdated = `${wxupdated.getFullYear()}-${wxmo}-${wxdy}&nbsp;at&nbsp;${twelveHour(wxhr)}:${wxmn}&nbsp;${ampm(wxhr)}`;
@@ -185,11 +181,16 @@ function showWeatherData(data) {
     <div id="controls">${controls}</div>
     <table class='table noselect cctable'>
     <tr class="wxfct bg-primary">
-    <td class="br-topleft"><p class="h3s">${cu.weather}</p></td>
-    <td class="br-topright"><p class="h3s">${cu.temp_f}&deg;F</p></td>
+    <td class="br-topleft">
+    <img class='wxicolg' src='https://icons.wxug.com/i/c/v4/${cu.icon_url.substr(28,cu.icon_url.length - 32)}.svg'>
+    </td>
+    <td class="br-topright" colspan=2><p class="h3s">${cu.weather}</p></td>
     </tr>
+    <tr class="wxfct bg-primary">
+    <td><p class="h3s">${cu.temp_f}&deg;F</p></td>
     ${wt}
     ${hl}
+    </tr>
     </table>
     ${tmrw}
     <h3>10 Day Forecast</h3>
