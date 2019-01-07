@@ -173,7 +173,7 @@ function showWeatherData(data) {
         wp = ho[i].pop == 0 ? `<td class="rounded-right tablevertcenter">${ho[i].wspd.english} MPH ${ho[i].wdir.dir}</td>` : `<td class="rounded-right tablevertcenter">${ho[i].wspd.english} MPH ${ho[i].wdir.dir}<br>${ho[i].pop}&#37;${qpf}</td>`;
         hourly += `<tr class="wxfct bg-primary"><td class="rounded-left">`;
         hourly += `<strong>${ho[i].FCTTIME.civil}</strong><br>${ho[i].FCTTIME.weekday_name_abbrev} ${ho[i].FCTTIME.mon_abbrev} ${ho[i].FCTTIME.mday}</td>`;
-        hourly += `<td><img class='wxico' src='https://icons.wxug.com/i/c/v4/${ho[i].icon}.svg'></td>`;
+        hourly += `<td><img class='wxico' src='https://icons.wxug.com/i/c/v4/${ho[i].icon_url.substr(28,ho[i].icon_url.length - 32)}.svg'></td>`;
         hourly += fr;
         hourly += wp;
         hourly += `</tr>`;
