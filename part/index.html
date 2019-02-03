@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Parts</title>
+    <link rel="stylesheet" href="https://bootswatch.com/4/darkly/bootstrap.min.css">
+    <link rel="stylesheet" href="../assets/css/part.css">
+    <link rel='shortcut icon' href='../assets/img/favicon.ico' type='image/x-icon'>
+</head>
+
+<body>
+    <div id="main">
+        <br>
+        <div class="row">
+            <div class="col-sm-4"></div>
+            <div class="col-sm-4">
+                <div class="input-group input-group-lg">
+                    <input id="pn" type="text" class="form-control" placeholder="Part number" aria-label="Part number"
+                        aria-describedby="button-addon2" onchange="makeLinks()">
+                </div>
+                <br>
+                <h4 class="text-center" id="part"></h4>
+                <h4 class="text-center" id="group"></h4>
+                <br>
+                <button type="button" class="btn btn-secondary btn-lg btn-block" onclick="makeLinks();window.open('http://www.realoem.com/bmw/enUS/partxref?q=' + partno)"
+                    disabled>RealOEM</button>
+                <button type="button" class="btn btn-dark btn-lg btn-block" onclick="makeLinks();window.open('https://www.getbmwparts.com/search?search_str=' + partno)"
+                    disabled>GetBMWParts</button>
+                <button type="button" class="btn btn-info btn-lg btn-block" onclick="makeLinks();window.open('https://www.fcpeuro.com/products?utf8=%E2%9C%93&keywords=' + partno)"
+                    disabled>FCP Euro</button>
+                <button type="button" class="btn btn-danger btn-lg btn-block" onclick="makeLinks();window.open('https://www.ecstuning.com/Search/SiteSearch/' + partno)"
+                    disabled>ECS</button>
+                <button type="button" class="btn btn-light btn-lg btn-block" onclick="makeLinks();window.open('https://bmwpartspros.com/parts/index.cfm?make=BMW&action=oePartSearch&siteid=216857&searchText=' + partno)"
+                    disabled>BMWPartsPros</button>
+                <button type="button" class="btn btn-success btn-lg btn-block" onclick="makeLinks();window.open('https://www.google.com/search?q=' + partno)"
+                    disabled>Google</button>
+                <button type="button" class="btn btn-warning btn-lg btn-block" onclick="makeLinks();window.open('https://www.amazon.com/s/ref=nb_sb_noss?url=search-alias%3Daps&field-keywords=' + partno)"
+                    disabled>Amazon</button>
+                <button type="button" class="btn btn-primary btn-lg btn-block" onclick="makeLinks();window.open('https://www.e90post.com/forums/googlesearch.php?q=' + partno)"
+                    disabled>E90Post</button>
+            </div>
+            <div class="col-sm-4"></div>
+        </div>
+    </div>
+
+    <div class="bg-info text-center footer"><strong>
+            &copy; 2019 Lucas Miller. All rights reserved.
+        </strong></div>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
+        crossorigin="anonymous"></script>
+    <script src="../assets/js/part.js"></script>
+</body>
+
+</html>
