@@ -3,8 +3,8 @@ var locTag = "Geolocation", color = "bg-success", roundedLocationData;
 function getWeek() {
     'use strict';
     var curDay = new Date();
-    var base = new Date(2018,11,30);
-    var week = Math.floor((curDay - base)/(1000*60*60*24)/7);
+    var base = new Date(2019, 2, 24);
+    var week = Math.floor((curDay - base) / (1000 * 60 * 60 * 24) / 7);
     $('#week').html(`Week ${week}`);
 }
 
