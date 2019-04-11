@@ -95,7 +95,7 @@ function updateLinks() {
             ["success", "http://catalog.calpoly.edu/", "Catalog"],
             ["success", "http://catalog.calpoly.edu/previouscatalogs/2015-2017/", "15-17 Catalog"],
             ["success", "http://www.polyratings.com/", "Polyratings"],
-            ["danger", "https://myportal.fhda.edu/", "Foothill Portal"],
+            // ["danger", "https://myportal.fhda.edu/", "Foothill Portal"],
             // ["danger", "https://ssb.cuesta.edu/prod/syk_class_finder.p_basic_search", "Cuesta Courses"],
         ],
         [
